@@ -1,0 +1,146 @@
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Net;
+using Avalonia.Media;
+using Lab_StenterUI_Avalonia.Command;
+using Lab_StenterUI_Avalonia.Model;
+using Lab_StenterUI_Avalonia.Services;
+using Lab_StenterUI_Avalonia.Store;
+
+namespace Lab_StenterUI_Avalonia.ViewModels;
+
+public class ConnectionWindowViewModel : ViewModelBase
+{
+    #region Instance Classes
+
+    private readonly ConnectionSetupModel _connectionSetupModel;
+    private readonly ConnectionStore _connectionStore;
+    private readonly ConnectionService _connectionService;
+
+    #endregion
+
+    #region Relays Commands
+
+    public RelayCommand OpenConnectionCommand { get; }
+    public RelayCommand CloseConnectionCommand { get; }
+
+    #endregion
+
+    #region Observable Collections
+
+    public ObservableCollection<string> CpuTypes => _connectionSetupModel.CpuType;
+    public ObservableCollection<int> Racks => _connectionSetupModel.Rack;
+    public ObservableCollection<int> Slots => _connectionSetupModel.Slot;
+
+    #endregion
+
+    public ConnectionWindowViewModel(ConnectionStore connectionStore, ConnectionService connectionService)
+    {
+        _connectionSetupModel = new ConnectionSetupModel();
+        _connectionStore = connectionStore;
+        _connectionService = connectionService;
+        _connectionStore.PropertyChanged += OnConnectionStoreChanged;
+
+        // Commands
+        OpenConnectionCommand = new RelayCommand(_ => OpenConnection(), _ => !IsConnected);
+        CloseConnectionCommand = new RelayCommand(_ => CloseConnection(), _ => IsConnected);
+    }
+
+    #region Properties
+
+    public string SelectedCpuType
+    {
+        get => _connectionStore.SelectedCpuType;
+        set
+        {
+            _connectionStore.SelectedCpuType = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string PlcIpAddress
+    {
+        get => _connectionStore.IpAddress;
+        set
+        {
+            _connectionStore.IpAddress = value;
+            OnPropertyChanged();
+            Debug.WriteLine(value);
+        }
+    }
+
+    public string SelectedRack
+    {
+        get => _connectionStore.SelectedRack;
+        set
+        {
+            _connectionStore.SelectedRack = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string SelectedSlot
+    {
+        get => _connectionStore.SelectedSlot;
+        set
+        {
+            _connectionStore.SelectedSlot = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public bool IsConnected => _connectionStore.IsConnected;
+
+    // Connection Status Indicator
+    public string ConnectionStatus => IsConnected ? "Connected" : "Disconnected";
+    public Brush ConnectionStatusColor => IsConnected ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Colors.Orange);
+
+    // IDataErrorInfo Implementation
+    public string Error => null;
+
+    public string this[string columnName]
+    {
+        get
+        {
+            if (columnName == nameof(PlcIpAddress))
+            {
+                if (string.IsNullOrEmpty(PlcIpAddress))
+                    return "IP Address cannot be empty.";
+
+                if (!IPAddress.TryParse(PlcIpAddress, out _))
+                    return "Invalid IP Address format.";
+            }
+
+            return null;
+        }
+    }
+
+    #endregion
+
+    private void OnConnectionStoreChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(_connectionStore.IsConnected))
+        {
+            OnPropertyChanged(nameof(ConnectionStatus));
+            OnPropertyChanged(nameof(ConnectionStatusColor));
+
+            OpenConnectionCommand.RaiseCanExecuteChanged();
+            CloseConnectionCommand.RaiseCanExecuteChanged();
+        }
+    }
+
+    #region Methods
+
+    private void OpenConnection()
+    {
+        bool connection = _connectionService.ConnectPlc(SelectedCpuType, PlcIpAddress, SelectedRack, SelectedSlot);
+    }
+
+    private void CloseConnection()
+    {
+        bool connection = _connectionService.DisconnectPlc();
+    }
+
+    #endregion
+}

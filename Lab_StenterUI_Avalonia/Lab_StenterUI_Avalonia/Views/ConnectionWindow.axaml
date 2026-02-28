@@ -1,0 +1,91 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Lab_StenterUI_Avalonia.ViewModels"
+        x:DataType="vm:ConnectionWindowViewModel"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Lab_StenterUI_Avalonia.Views.ConnectionWindow"
+        Title="ConnectionWindow">
+    
+        
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- Plc Connection Status -->
+        <StackPanel Grid.Row="0" Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Ellipse Width="14" Height="14"
+                     Fill="{Binding ConnectionStatusColor}"
+                     Margin="0,0,10,0"/>
+            <TextBlock FontSize="14" FontWeight="Normal">
+                <Run Text="Status:" Foreground="#333" />
+                <Run Text="{Binding ConnectionStatus, Mode=OneWay}"
+                     FontWeight="SemiBold"
+                     Foreground="#2C3E50" />
+            </TextBlock>
+        </StackPanel>
+
+        <!-- Select Cpu Type -->
+        <TextBlock Grid.Row="1" Text="Cpu Type" FontSize="14" FontWeight="SemiBold" Foreground="#2C3E50"
+                   Margin="20,5,20,2" />
+        <ComboBox Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                  Margin="20,0,20,5"
+                  Height="27" ItemsSource="{Binding CpuTypes}"
+                  FontSize="14" FontWeight="Normal"
+                  Text="{Binding SelectedCpuType}"/>
+        <!-- Input PLC IP Address -->
+        <TextBlock Grid.Row="3" Text="IP Address" FontSize="14" FontWeight="SemiBold" Foreground="#2C3E50"
+                   Margin="20,5,20,0" />
+        <TextBox Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                 Margin="20,0,20,5" Height="27"
+                 FontSize="14" FontWeight="Normal"
+                 Text="{Binding PlcIpAddress}" />
+        <!-- Select Rack -->
+        <TextBlock Grid.Row="5" Text="Rack" FontSize="14" FontWeight="SemiBold" Foreground="#2C3E50"
+                   Margin="20,5,20,0" />
+        <ComboBox Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                  Margin="20,0,20,5"
+                  Height="27" ItemsSource="{Binding Racks}"
+                  FontSize="14" FontWeight="Normal"
+                  Text="{Binding SelectedRack}"/>
+        <!-- Select Slot -->
+        <TextBlock Grid.Row="7" Text="Slot" FontSize="14" FontWeight="SemiBold" Foreground="#2C3E50"
+                   Margin="20,5,20,0" />
+        <ComboBox Grid.Row="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                  Margin="20,0,20,5" Height="27"
+                  ItemsSource="{Binding Slots}"
+                  FontSize="14" FontWeight="Normal"
+                  Text="{Binding SelectedSlot}"/>
+
+        <!-- Buttons Connect - Disconnect - Close Modal -->
+        <StackPanel Grid.Row="9" Margin="0,12,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Margin="0,0,120,0"
+                        Content="Connect"
+                        Height="35" Width="100"
+                        FontSize="14" FontWeight="Medium"
+                        Command="{Binding OpenConnectionCommand}"/>
+                <Button Grid.Row="0" Margin="120,0,0,0"
+                        Content="Disconnect"
+                        Height="35" Width="100"
+                        FontSize="14" FontWeight="Medium"
+                        Command="{Binding CloseConnectionCommand}"/>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

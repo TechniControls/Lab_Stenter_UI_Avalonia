@@ -1,0 +1,324 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Lab_StenterUI_Avalonia.ViewModels"
+             x:DataType="vm:HomeViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Lab_StenterUI_Avalonia.Views.HomeView">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Classes="card" Margin="0,0,0,16">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Polyester"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="#1F2937" />
+                        <TextBlock Text="Temperature Control &amp; Recipe Management"
+                                   FontSize="14"
+                                   Foreground="#6B7280"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,0,0,0">
+                        <StackPanel Margin="50,0,32,0">
+                            <TextBlock Text="Estado Actual"
+                                       FontSize="12"
+                                       Foreground="#6B7280"
+                                       HorizontalAlignment="Right" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                                <Ellipse Width="12"
+                                         Height="12"
+                                         Fill="{Binding ColorMachineStatus}"
+                                         Margin="0,0,8,0"
+                                         Opacity="0.8"/>
+                                <TextBlock Text="{Binding MachineStatus}"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1F2937" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="PT100-1"
+                                       FontSize="12"
+                                       Foreground="#6B7280" />
+                            <TextBlock FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#3B82F6"
+                                       Margin="0,4,0,0">
+                                <Run Text="{Binding ValueFirstPT100, Mode=OneWay}" />
+                                <Run Text="°C" />
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock Text="PT100-2"
+                                       FontSize="12"
+                                       Foreground="#6B7280" />
+                            <TextBlock FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#3B82F6"
+                                       Margin="0,4,0,0">
+                                <Run Text="{Binding ValueSecondPT100, Mode=OneWay}" />
+                                <Run Text="°C" />
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock Text="Δ°C"
+                                       FontSize="12"
+                                       Foreground="#6B7280" />
+                            <TextBlock FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#3B82F6"
+                                       Margin="0,4,0,0">
+                                <Run Text="{Binding TemperatureDelta, Mode=OneWay, StringFormat={}{0:F1}}" />
+                                <Run Text="°C" />
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Margin="32,0,32,0">
+                            <TextBlock Text="Alarmas"
+                                       FontSize="12"
+                                       Foreground="#6B7280"
+                                       HorizontalAlignment="Left" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                                <Ellipse Width="12" Height="12" Fill="{Binding ColorAlarmsStatus}" Margin="0,0,8,0" Opacity="0.8"/>
+                                <TextBlock Text="{Binding AlarmsStatus}"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1F2937" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="1" Margin="0,24,0,0">
+                    <Grid Margin="0,0,0,8">
+                        <TextBlock Text="Cycle Progress"
+                                   FontSize="12"
+                                   Foreground="#6B7280"
+                                   HorizontalAlignment="Left" />
+                        <TextBlock Text="45% Complete"
+                                   FontSize="12"
+                                   Foreground="#6B7280"
+                                   HorizontalAlignment="Right" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Classes="cardRecipe" Margin="0,8,0,8" Width="300">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="32" Height="32" Fill="#3B82F6" Margin="0,0,12,0" />
+                                    <StackPanel>
+                                        <TextBlock Text="Polyester" FontSize="15" FontWeight="SemiBold" Foreground="#1F2937" />
+                                        <TextBlock Text="Recipe #1" FontSize="12" Foreground="#6B7280" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Temperature:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterTemperature, Mode=OneWay}" />
+                                        <Run Text="°C" />
+                                    </TextBlock>
+                                    <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterFanSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="50,0,0,0">
+                                    <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessTime, Mode=OneWay}" />
+                                        <Run Text="Min" />
+                                    </TextBlock>
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterExtractorSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Button Content="Load Recipe" Classes="secondary" Command="{Binding LoadRecipeOneCommand}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="1" Classes="cardRecipe" Margin="8,8,0,8" Width="300">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="32" Height="32" Fill="#EF4444" Margin="0,0,12,0" />
+                                    <StackPanel>
+                                        <TextBlock Text="Powernet" FontSize="15" FontWeight="SemiBold" Foreground="#1F2937" />
+                                        <TextBlock Text="Recipe #2" FontSize="12" Foreground="#6B7280" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Temperature:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PowernetTemperature, Mode=OneWay}" />
+                                        <Run Text="°C" />
+                                    </TextBlock>
+                                    <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PowernetFanSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="50,0,0,0">
+                                    <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PowernetProcessTime, Mode=OneWay}" />
+                                        <Run Text="Min" />
+                                    </TextBlock>
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PowernetExtractorSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Button Content="Load Recipe" Classes="secondary" Command="{Binding LoadRecipeTwoCommand}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Classes="cardRecipe" Margin="8,8,0,8" Width="300">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="32" Height="32" Fill="#EF4444" Margin="0,0,12,0" />
+                                    <StackPanel>
+                                        <TextBlock Text="Blonda" FontSize="15" FontWeight="SemiBold" Foreground="#1F2937" />
+                                        <TextBlock Text="Recipe #3" FontSize="12" Foreground="#6B7280" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Temperature:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding BlondaTemperature, Mode=OneWay}" />
+                                        <Run Text="°C" />
+                                    </TextBlock>
+                                    <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding BlondaFanSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="50,0,0,0">
+                                    <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding BlondaProcessTime, Mode=OneWay}" />
+                                        <Run Text="Min" />
+                                    </TextBlock>
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding BlondaExtractorSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Button Content="Load Recipe" Classes="secondary" Command="{Binding LoadRecipeThreeCommand}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="3" Classes="cardRecipe" Margin="8,8,0,8" Width="300">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="32" Height="32" Fill="#EF4444" Margin="0,0,12,0" />
+                                    <StackPanel>
+                                        <TextBlock Text="Decoration" FontSize="15" FontWeight="SemiBold" Foreground="#1F2937" />
+                                        <TextBlock Text="Recipe #4" FontSize="12" Foreground="#6B7280" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Temperature:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding DecorationTemperature, Mode=OneWay}" />
+                                        <Run Text="°C" />
+                                    </TextBlock>
+                                    <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding DecorationFanSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="50,0,0,0">
+                                    <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding DecorationProcessTime, Mode=OneWay}" />
+                                        <Run Text="Min" />
+                                    </TextBlock>
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0" />
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding DecorationExtractorSpeed, Mode=OneWay}" />
+                                        <Run Text="RPM" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Button Content="Load Recipe" Classes="secondary" Command="{Binding LoadRecipeFourCommand}"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

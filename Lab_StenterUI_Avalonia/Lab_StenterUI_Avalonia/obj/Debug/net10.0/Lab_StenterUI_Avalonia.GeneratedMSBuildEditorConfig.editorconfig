@@ -1,0 +1,48 @@
+is_global = true
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.AvaloniaNameGeneratorViewFileNamingStrategy = NamespaceAndClassName
+build_property.AvaloniaNameGeneratorAttachDevTools = true
+build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Lab_StenterUI_Avalonia
+build_property.ProjectDir = C:\Users\Stiven\Documents\VS_Projects\Lab_Stenter_UI_Avalonia\Lab_StenterUI_Avalonia\Lab_StenterUI_Avalonia\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Assets/Styles/Buttons.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Assets/Styles/Cards.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Views/ConnectionWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Views/HomeView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Views/ProcessControlView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Stiven/Documents/VS_Projects/Lab_Stenter_UI_Avalonia/Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia/Views/TemperatureTrendView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

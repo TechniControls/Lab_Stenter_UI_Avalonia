@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Lab_StenterUI_Avalonia/App.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/Assets/Styles/Buttons.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/Assets/Styles/Cars.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/MainWindow.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/Views/ConnectionWindow.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/Views/HomeView.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/Views/ProcessControlView.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+        <entry key="Lab_StenterUI_Avalonia/Views/TemperatureTrendView.axaml" value="Lab_StenterUI_Avalonia/Lab_StenterUI_Avalonia.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

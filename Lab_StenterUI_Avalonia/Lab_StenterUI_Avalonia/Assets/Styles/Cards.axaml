@@ -1,0 +1,9 @@
+<Styles xmlns="https://github.com/avaloniaui"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Border.card">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="24" />
+        <Setter Property="BoxShadow" Value="0 2 10 0 #1A000000" />
+    </Style>
+</Styles>

@@ -1,0 +1,18 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Lab_StenterUI_Avalonia.Views.MainWindow"
+        Title="Lab_StenterUI_Avalonia"
+        xmlns:vm="using:Lab_StenterUI_Avalonia.ViewModels"
+        x:DataType="vm:MainWindowViewModel">
+        <StackPanel>
+        <StackPanel Orientation="Horizontal">
+                <Button Content="Home" Command="{Binding GoHomeCommand}" Margin="0,0,10,0"/>
+                <Button Content="Settings" Command="{Binding GoProcessControlCommand}"/>
+                </StackPanel>
+
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+        </StackPanel>
+</Window>
